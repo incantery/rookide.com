@@ -2,15 +2,13 @@
   import { Nav, Footer, Button, InstallChip, TerminalFrame, links } from '@rookide/ui';
 </script>
 
-<div class="min-h-screen bg-bg font-sans text-fg">
+<div
+  class="min-h-screen font-sans text-fg [background:radial-gradient(1200px_520px_at_50%_-120px,rgba(130,170,255,0.1),transparent_62%),var(--color-bg)]"
+>
   <Nav />
 
   <!-- Hero / manifesto -->
-  <header
-    id="vision"
-    class="mx-auto max-w-3xl px-6 pt-16 pb-14
-      [background:radial-gradient(1100px_460px_at_50%_-10%,rgba(130,170,255,.10),transparent_60%)]"
-  >
+  <header id="vision" class="mx-auto max-w-3xl px-6 pt-16 pb-14">
     <p class="mb-6 font-mono text-xs uppercase tracking-[0.16em] text-dim">
       ◆ An open-source experiment
     </p>
