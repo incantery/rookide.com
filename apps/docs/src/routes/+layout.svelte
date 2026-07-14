@@ -14,6 +14,17 @@
   );
 </script>
 
+<svelte:head>
+  <meta
+    name="description"
+    content="Documentation for rook — an agent-native IDE. Install, configure, and understand the project."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="rook docs" />
+  <meta property="og:image" content="https://rookide.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <div class="min-h-screen bg-bg font-sans text-fg">
   <nav class="flex items-center justify-between border-b border-lo/15 px-6 py-4 font-mono text-sm">
     <a href="/" class="font-bold">♜ <span class="text-acc">rook</span> <span class="text-dim">docs</span></a>

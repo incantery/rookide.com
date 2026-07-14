@@ -15,5 +15,5 @@ export async function load({ params }) {
   const loader = modules[path];
   if (!loader) throw error(404, `No doc: ${params.slug}`);
   const mod: any = await loader();
-  return { component: mod.default, title: mod.metadata?.title ?? params.slug };
+  return { component: mod.default, title: mod.metadata?.title ?? params.slug, slug: params.slug };
 }
