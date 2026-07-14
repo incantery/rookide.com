@@ -15,7 +15,7 @@
 - **No external network dependencies at runtime.** No font/script/style CDNs. Fonts use system stacks (see below); no webfont binaries in v1.
 - **Fully prerendered.** Every app sets `export const prerender = true` in its root layout; no SSR endpoints.
 - **Brand tokens (Night Owl), copied verbatim** — these are the exact hex values, do not alter:
-  `--color-acc:#82aaff` · `--color-grn:#c3e88d` · `--color-amber:#ffcb6b` · `--color-red:#ff5370` · `--color-fg:#d6deeb` · `--color-dim:#8f93a2` · `--color-lo:#5b6273` · background `#0f111a`.
+  `--color-acc:#82aaff` · `--color-grn:#c3e88d` · `--color-amber:#ffcb6b` · `--color-red:#ff5370` · `--color-fg:#d6deeb` · `--color-dim:#8f93a2` · `--color-lo:#5b6273` · background `#0f111a` · `--color-surface:#0b0e17` (darker terminal/code surface). Components reference tokens via Tailwind utilities (`bg-surface`, `text-acc`, …), never a raw hex. Svelte 5 `$props()` takes no type argument — type it with a destructuring annotation (`let { … }: { … } = $props()`), not `$props<T>()`.
 - **Font stacks (system, no webfonts in v1):** mono = `"SF Mono", Menlo, ui-monospace, "Cascadia Code", monospace`; sans = `ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`. (Spec called for self-hosted fonts; simplified to system stacks for v1 to stay CSP-clean with zero binaries. Self-hosting a branded sans is deferred.)
 - **Brand truth lives once** in `packages/ui`. Apps must not redefine color/font tokens locally.
 - **Wordmark:** interim is the `♜` glyph + "rook". No logo asset yet.
@@ -202,6 +202,7 @@ git commit -m "chore: scaffold pnpm workspace"
   --color-fg: #d6deeb;
   --color-dim: #8f93a2;
   --color-lo: #5b6273;
+  --color-surface: #0b0e17;
 
   --font-mono: "SF Mono", Menlo, ui-monospace, "Cascadia Code", monospace;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -279,18 +280,19 @@ export const links = {
 
 ```svelte
 <script lang="ts">
-  let { href, variant = 'solid', children } = $props<{
-    href: string;
-    variant?: 'solid' | 'ghost';
-    children: import('svelte').Snippet;
-  }>();
+  import type { Snippet } from 'svelte';
+  let {
+    href,
+    variant = 'solid',
+    children
+  }: { href: string; variant?: 'solid' | 'ghost'; children: Snippet } = $props();
 </script>
 
 <a
   {href}
   class="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 font-mono text-sm font-semibold transition-colors
     {variant === 'solid'
-      ? 'bg-acc text-[#0b0e17] hover:brightness-110'
+      ? 'bg-acc text-surface hover:brightness-110'
       : 'border border-lo/50 text-fg hover:border-acc/60'}"
 >
   {@render children()}
@@ -368,7 +370,8 @@ export const links = {
 
 ```svelte
 <script lang="ts">
-  let { children } = $props<{ children: import('svelte').Snippet }>();
+  import type { Snippet } from 'svelte';
+  let { children }: { children: Snippet } = $props();
 </script>
 
 <div
@@ -380,7 +383,7 @@ export const links = {
     [&_a]:text-acc [&_a:hover]:underline
     [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:my-1
     [&_code]:rounded [&_code]:bg-lo/20 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm [&_code]:text-grn
-    [&_pre]:my-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-lo/20 [&_pre]:bg-[#0b0e17] [&_pre]:p-4
+    [&_pre]:my-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-lo/20 [&_pre]:bg-surface [&_pre]:p-4
     [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-fg"
 >
   {@render children()}
@@ -391,17 +394,15 @@ export const links = {
 
 ```svelte
 <script lang="ts">
-  let { title = 'rook', children } = $props<{
-    title?: string;
-    children: import('svelte').Snippet;
-  }>();
+  import type { Snippet } from 'svelte';
+  let { title = 'rook', children }: { title?: string; children: Snippet } = $props();
 </script>
 
-<div class="overflow-hidden rounded-xl border border-lo/25 bg-[#0b0e17] font-mono text-sm">
+<div class="overflow-hidden rounded-xl border border-lo/25 bg-surface font-mono text-sm">
   <div class="flex items-center gap-2 border-b border-lo/15 bg-white/[0.02] px-3 py-2">
-    <span class="h-2.5 w-2.5 rounded-full bg-red"></span>
-    <span class="h-2.5 w-2.5 rounded-full bg-amber"></span>
-    <span class="h-2.5 w-2.5 rounded-full bg-grn"></span>
+    <span class="h-2.5 w-2.5 rounded-full bg-red" aria-hidden="true"></span>
+    <span class="h-2.5 w-2.5 rounded-full bg-amber" aria-hidden="true"></span>
+    <span class="h-2.5 w-2.5 rounded-full bg-grn" aria-hidden="true"></span>
     <span class="ml-2 text-xs text-dim">{title}</span>
   </div>
   <div class="p-4 leading-relaxed">
