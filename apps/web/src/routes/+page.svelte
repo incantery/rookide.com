@@ -69,6 +69,36 @@
     </TerminalFrame>
   </section>
 
+  <!-- See it in action -->
+  <section id="demo" class="mx-auto max-w-3xl px-6 py-14">
+    <h2 class="mb-4 text-2xl font-bold">See it in action</h2>
+    <p class="mb-6 max-w-[62ch] leading-relaxed text-dim">
+      Spawn an agent, watch it work, and stay oriented across the whole session — from one workspace.
+    </p>
+    <figure class="overflow-hidden rounded-xl border border-lo/25 bg-surface">
+      <div class="flex items-center gap-2 border-b border-lo/15 bg-white/[0.02] px-3 py-2">
+        <span class="h-2.5 w-2.5 rounded-full bg-red" aria-hidden="true"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-amber" aria-hidden="true"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-grn" aria-hidden="true"></span>
+        <span class="ml-2 font-mono text-xs text-dim">rook — spawning agents</span>
+      </div>
+      <!-- svelte-ignore a11y_media_has_caption -->
+      <video
+        class="block w-full"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="none"
+        poster="/demo/rook-spawning-agents.poster.jpg"
+        aria-label="Screen recording of spawning and monitoring an agent in rook"
+      >
+        <source src="/demo/rook-spawning-agents.mp4" type="video/mp4" />
+        <source src="/demo/rook-spawning-agents.webm" type="video/webm" />
+      </video>
+    </figure>
+  </section>
+
   <!-- Join / Install -->
   <section class="mx-auto max-w-3xl px-6 py-16">
     <h2 class="mb-3 text-2xl font-bold">Join us in building it</h2>
