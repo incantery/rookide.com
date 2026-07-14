@@ -1,0 +1,36 @@
+/* @rookide/ui — the single source of brand truth.
+   Night Owl palette + system font stacks, exposed as Tailwind v4 theme
+   tokens. Both apps @import this after "tailwindcss". */
+@theme {
+  --color-bg: #0f111a;
+  --color-acc: #82aaff;
+  --color-grn: #c3e88d;
+  --color-amber: #ffcb6b;
+  --color-red: #ff5370;
+  --color-fg: #d6deeb;
+  --color-dim: #8f93a2;
+  --color-lo: #5b6273;
+
+  --font-mono: "SF Mono", Menlo, ui-monospace, "Cascadia Code", monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Global base shared by both sites. */
+:root {
+  color-scheme: dark;
+}
+html {
+  background: var(--color-bg);
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
