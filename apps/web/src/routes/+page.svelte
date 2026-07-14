@@ -20,14 +20,13 @@
     </h1>
     <p class="mb-4 text-lg leading-relaxed">That is no longer how software gets built.</p>
     <p class="mb-4 max-w-[62ch] leading-relaxed text-dim">
-      Coding agents can work across multiple tasks, repositories, terminals, and review
-      cycles at once. But today's tools still make you manage that work through
+      Coding agents can work across multiple tasks, repositories, terminals, and review cycles at
+      once. But today's tools still make you manage that work through
       <span class="text-fg">scattered windows, tabs, chats, and terminal sessions.</span>
     </p>
     <p class="mb-4 max-w-[62ch] leading-relaxed text-dim">
       Rook is an experiment in what comes next: an <span class="text-fg">agent-native IDE</span>
-      built around persistent workspaces, concurrent agent sessions, review, and attention
-      management.
+      built around persistent workspaces, concurrent agent sessions, review, and attention management.
     </p>
     <p class="my-7 font-mono text-sm text-amber">
       It is early. The shape of this new category is not settled yet.
@@ -46,9 +45,10 @@
       terminal, the review UI — quietly assumes it. That assumption is breaking.
     </p>
     <p class="max-w-[62ch] leading-relaxed text-dim">
-      When several agents work in parallel across repositories, the bottleneck stops being how
-      fast you can type and becomes how well you can <span class="text-fg">direct, review, and
-      stay oriented</span> across all of it at once. That is the problem rook is built around.
+      When several agents work in parallel across repositories, the bottleneck stops being how fast
+      you can type and becomes how well you can <span class="text-fg"
+        >direct, review, and stay oriented</span
+      > across all of it at once. That is the problem rook is built around.
     </p>
   </section>
 
@@ -61,9 +61,13 @@
       already trusted. Parity first, magic second.
     </p>
     <TerminalFrame title="rook — 1 · main">
-      <div><span class="text-grn">agent</span> <span class="text-dim">▸ split pane, run tests</span></div>
+      <div>
+        <span class="text-grn">agent</span> <span class="text-dim">▸ split pane, run tests</span>
+      </div>
       <div class="text-dim">✓ 42 passing · 0.8s</div>
-      <div><span class="text-acc">~/rook</span> ❯ <span class="border-b-2 border-acc">&nbsp;</span></div>
+      <div>
+        <span class="text-acc">~/rook</span> ❯ <span class="border-b-2 border-acc">&nbsp;</span>
+      </div>
     </TerminalFrame>
   </section>
 
@@ -71,8 +75,8 @@
   <section class="mx-auto max-w-3xl px-6 py-16">
     <h2 class="mb-3 text-2xl font-bold">Join us in building it</h2>
     <p class="mb-6 max-w-[60ch] leading-relaxed text-dim">
-      If the tools you have today do not fit the way you actually work with agents, come help
-      define what replaces them.
+      If the tools you have today do not fit the way you actually work with agents, come help define
+      what replaces them.
     </p>
     <div class="flex flex-wrap items-center gap-3">
       <Button href={links.github}>GitHub — star & discuss</Button>

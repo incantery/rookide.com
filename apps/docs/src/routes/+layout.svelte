@@ -8,9 +8,7 @@
     { metadata?: { title?: string; order?: number } }
   >;
   const nav = buildNav(
-    Object.fromEntries(
-      Object.entries(files).map(([p, m]) => [p, { frontmatter: m.metadata }])
-    )
+    Object.fromEntries(Object.entries(files).map(([p, m]) => [p, { frontmatter: m.metadata }]))
   );
 </script>
 
@@ -27,7 +25,9 @@
 
 <div class="min-h-screen bg-bg font-sans text-fg">
   <nav class="flex items-center justify-between border-b border-lo/15 px-6 py-4 font-mono text-sm">
-    <a href="/" class="font-bold">♜ <span class="text-acc">rook</span> <span class="text-dim">docs</span></a>
+    <a href="/" class="font-bold"
+      >♜ <span class="text-acc">rook</span> <span class="text-dim">docs</span></a
+    >
     <a href={links.github} class="text-dim hover:text-fg">GitHub</a>
   </nav>
   <div class="mx-auto flex max-w-5xl gap-10 px-6 py-10">
@@ -35,7 +35,10 @@
       <ul class="sticky top-10 space-y-1 font-mono text-sm">
         {#each nav as item}
           <li>
-            <a href="/{item.slug}" class="block rounded px-2 py-1 text-dim hover:bg-lo/15 hover:text-fg">
+            <a
+              href="/{item.slug}"
+              class="block rounded px-2 py-1 text-dim hover:bg-lo/15 hover:text-fg"
+            >
               {item.title}
             </a>
           </li>

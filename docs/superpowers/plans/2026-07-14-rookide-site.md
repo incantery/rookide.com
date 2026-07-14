@@ -88,18 +88,20 @@ rookide.com/
 ### Task 1: Workspace scaffold
 
 **Files:**
+
 - Create: `pnpm-workspace.yaml`, `package.json`, `.prettierrc`, `.nvmrc`
 - (`.gitignore` already exists)
 
 **Interfaces:**
+
 - Produces: a working pnpm workspace; root scripts `dev:web`, `dev:docs`, `build:web`, `build:docs`, `build`, `check`, `format`.
 
 - [ ] **Step 1: Create `pnpm-workspace.yaml`**
 
 ```yaml
 packages:
-  - "packages/*"
-  - "apps/*"
+  - 'packages/*'
+  - 'apps/*'
 ```
 
 - [ ] **Step 2: Create root `package.json`**
@@ -164,9 +166,11 @@ git commit -m "chore: scaffold pnpm workspace"
 ### Task 2: `@rookide/ui` — theme + package setup
 
 **Files:**
+
 - Create: `packages/ui/package.json`, `packages/ui/src/theme.css`
 
 **Interfaces:**
+
 - Produces: package `@rookide/ui` with export `"./theme.css"` → `src/theme.css` (imported by both apps' `app.css`). Defines all brand tokens as Tailwind v4 `@theme` variables.
 
 - [ ] **Step 1: Create `packages/ui/package.json`**
@@ -204,8 +208,8 @@ git commit -m "chore: scaffold pnpm workspace"
   --color-lo: #5b6273;
   --color-surface: #0b0e17;
 
-  --font-mono: "SF Mono", Menlo, ui-monospace, "Cascadia Code", monospace;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'SF Mono', Menlo, ui-monospace, 'Cascadia Code', monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Global base shared by both sites. */
@@ -251,9 +255,11 @@ git commit -m "feat(ui): add brand theme package"
 ### Task 3: `@rookide/ui` — shared components
 
 **Files:**
+
 - Create: `packages/ui/src/lib/links.ts`, `Button.svelte`, `InstallChip.svelte`, `Nav.svelte`, `Footer.svelte`, `Prose.svelte`, `TerminalFrame.svelte`, `index.ts`
 
 **Interfaces:**
+
 - Consumes: theme tokens from Task 2 (Tailwind utility classes like `text-acc`, `bg-bg`, `font-mono`).
 - Produces:
   - `links` object: `{ github: string, subreddit: string, docs: string, install: string, license: string }`
@@ -292,8 +298,8 @@ export const links = {
   {href}
   class="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 font-mono text-sm font-semibold transition-colors
     {variant === 'solid'
-      ? 'bg-acc text-surface hover:brightness-110'
-      : 'border border-lo/50 text-fg hover:border-acc/60'}"
+    ? 'bg-acc text-surface hover:brightness-110'
+    : 'border border-lo/50 text-fg hover:border-acc/60'}"
 >
   {@render children()}
 </a>
@@ -435,9 +441,11 @@ git commit -m "feat(ui): add shared brand components"
 ### Task 4: `apps/web` — SvelteKit static scaffold
 
 **Files:**
+
 - Create: `apps/web/package.json`, `svelte.config.js`, `vite.config.ts`, `tsconfig.json`, `src/app.html`, `src/app.css`, `src/routes/+layout.ts`, `src/routes/+layout.svelte`, `src/routes/+page.svelte` (placeholder)
 
 **Interfaces:**
+
 - Consumes: `@rookide/ui` theme + components.
 - Produces: a buildable, fully-prerendered SvelteKit app that outputs static files to `apps/web/build`.
 
@@ -524,7 +532,10 @@ export default defineConfig({
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9C%3C/text%3E%3C/svg%3E" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9C%3C/text%3E%3C/svg%3E"
+    />
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">
@@ -597,9 +608,11 @@ git commit -m "feat(web): scaffold static sveltekit app"
 ### Task 5: `apps/web` — landing page
 
 **Files:**
+
 - Modify: `apps/web/src/routes/+page.svelte` (replace placeholder)
 
 **Interfaces:**
+
 - Consumes: `Nav`, `Footer`, `Button`, `InstallChip`, `TerminalFrame`, `links` from `@rookide/ui`.
 - Produces: the full marketing landing page (hero/manifesto → the shift → where it is today → join/install → footer).
 
@@ -628,14 +641,13 @@ git commit -m "feat(web): scaffold static sveltekit app"
     </h1>
     <p class="mb-4 text-lg leading-relaxed">That is no longer how software gets built.</p>
     <p class="mb-4 max-w-[62ch] leading-relaxed text-dim">
-      Coding agents can work across multiple tasks, repositories, terminals, and review
-      cycles at once. But today's tools still make you manage that work through
+      Coding agents can work across multiple tasks, repositories, terminals, and review cycles at
+      once. But today's tools still make you manage that work through
       <span class="text-fg">scattered windows, tabs, chats, and terminal sessions.</span>
     </p>
     <p class="mb-4 max-w-[62ch] leading-relaxed text-dim">
       Rook is an experiment in what comes next: an <span class="text-fg">agent-native IDE</span>
-      built around persistent workspaces, concurrent agent sessions, review, and attention
-      management.
+      built around persistent workspaces, concurrent agent sessions, review, and attention management.
     </p>
     <p class="my-7 font-mono text-sm text-amber">
       It is early. The shape of this new category is not settled yet.
@@ -654,9 +666,10 @@ git commit -m "feat(web): scaffold static sveltekit app"
       terminal, the review UI — quietly assumes it. That assumption is breaking.
     </p>
     <p class="max-w-[62ch] leading-relaxed text-dim">
-      When several agents work in parallel across repositories, the bottleneck stops being how
-      fast you can type and becomes how well you can <span class="text-fg">direct, review, and
-      stay oriented</span> across all of it at once. That is the problem rook is built around.
+      When several agents work in parallel across repositories, the bottleneck stops being how fast
+      you can type and becomes how well you can <span class="text-fg"
+        >direct, review, and stay oriented</span
+      > across all of it at once. That is the problem rook is built around.
     </p>
   </section>
 
@@ -669,9 +682,13 @@ git commit -m "feat(web): scaffold static sveltekit app"
       already trusted. Parity first, magic second.
     </p>
     <TerminalFrame title="rook — 1 · main">
-      <div><span class="text-grn">agent</span> <span class="text-dim">▸ split pane, run tests</span></div>
+      <div>
+        <span class="text-grn">agent</span> <span class="text-dim">▸ split pane, run tests</span>
+      </div>
       <div class="text-dim">✓ 42 passing · 0.8s</div>
-      <div><span class="text-acc">~/rook</span> ❯ <span class="border-b-2 border-acc">&nbsp;</span></div>
+      <div>
+        <span class="text-acc">~/rook</span> ❯ <span class="border-b-2 border-acc">&nbsp;</span>
+      </div>
     </TerminalFrame>
   </section>
 
@@ -679,8 +696,8 @@ git commit -m "feat(web): scaffold static sveltekit app"
   <section class="mx-auto max-w-3xl px-6 py-16">
     <h2 class="mb-3 text-2xl font-bold">Join us in building it</h2>
     <p class="mb-6 max-w-[60ch] leading-relaxed text-dim">
-      If the tools you have today do not fit the way you actually work with agents, come help
-      define what replaces them.
+      If the tools you have today do not fit the way you actually work with agents, come help define
+      what replaces them.
     </p>
     <div class="flex flex-wrap items-center gap-3">
       <Button href={links.github}>GitHub — star & discuss</Button>
@@ -715,10 +732,12 @@ git commit -m "feat(web): build vision-forward landing page"
 ### Task 6: `apps/web` — SEO foundations
 
 **Files:**
+
 - Create: `apps/web/src/lib/seo.ts`, `apps/web/src/lib/seo.test.ts`, `apps/web/src/routes/sitemap.xml/+server.ts`, `apps/web/static/robots.txt`, `apps/web/static/_headers`, `apps/web/vitest.config.ts`
 - Modify: `apps/web/src/routes/+layout.svelte` (add `<svelte:head>` meta), `apps/web/package.json` (add vitest + test script)
 
 **Interfaces:**
+
 - Consumes: nothing new.
 - Produces: `buildMeta(input: { title: string; description: string; url: string; image?: string }): MetaTags` where `MetaTags` is `{ title: string; tags: Array<{ name?: string; property?: string; content: string }> }`. Used to render `<meta>` in head.
 
@@ -751,8 +770,7 @@ describe('buildMeta', () => {
       image: 'https://rookide.com/og.png'
     });
     expect(m.title).toBe('rook — agent-native IDE');
-    const byKey = (k: string, v: string) =>
-      m.tags.find((t) => t.name === v || t.property === v);
+    const byKey = (k: string, v: string) => m.tags.find((t) => t.name === v || t.property === v);
     expect(byKey('name', 'description')?.content).toBe('An experiment in what comes next.');
     expect(byKey('property', 'og:title')?.content).toBe('rook — agent-native IDE');
     expect(byKey('property', 'og:image')?.content).toBe('https://rookide.com/og.png');
@@ -889,9 +907,11 @@ git commit -m "feat(web): add SEO foundations (meta, OG, sitemap, robots, JSON-L
 ### Task 7: `apps/docs` — SvelteKit + mdsvex scaffold
 
 **Files:**
+
 - Create: `apps/docs/package.json`, `svelte.config.js`, `mdsvex.config.js`, `vite.config.ts`, `tsconfig.json`, `src/app.html`, `src/app.css`, `src/routes/+layout.ts`, `src/routes/+layout.svelte` (minimal), `src/routes/+page.svelte` (placeholder)
 
 **Interfaces:**
+
 - Consumes: `@rookide/ui` theme + `Prose`.
 - Produces: a buildable static docs app that compiles `.md`/`.svx` through mdsvex.
 
@@ -994,7 +1014,10 @@ export default defineConfig({
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9C%3C/text%3E%3C/svg%3E" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%99%9C%3C/text%3E%3C/svg%3E"
+    />
     %sveltekit.head%
   </head>
   <body data-sveltekit-preload-data="hover">
@@ -1055,10 +1078,12 @@ git commit -m "feat(docs): scaffold static sveltekit + mdsvex app"
 ### Task 8: `apps/docs` — sidebar generator (TDD) + doc routing
 
 **Files:**
+
 - Create: `apps/docs/src/lib/nav.ts`, `apps/docs/src/lib/nav.test.ts`, `apps/docs/vitest.config.ts`, `apps/docs/src/routes/[...slug]/+page.ts`, `apps/docs/src/routes/[...slug]/+page.svelte`
 - Modify: `apps/docs/src/routes/+layout.svelte` (sidebar + prose shell), `apps/docs/src/routes/+page.svelte` (index)
 
 **Interfaces:**
+
 - Consumes: mdsvex-compiled markdown modules via `import.meta.glob`.
 - Produces:
   - `buildNav(files: Record<string, { frontmatter?: { title?: string; order?: number } }>): NavItem[]` where `NavItem = { slug: string; title: string; order: number }`, sorted by `order` then `title`. `slug` is the content filename without extension (e.g. `content/install.md` → `install`).
@@ -1194,15 +1219,15 @@ export async function load({ params }) {
     { metadata?: { title?: string; order?: number } }
   >;
   const nav = buildNav(
-    Object.fromEntries(
-      Object.entries(files).map(([p, m]) => [p, { frontmatter: m.metadata }])
-    )
+    Object.fromEntries(Object.entries(files).map(([p, m]) => [p, { frontmatter: m.metadata }]))
   );
 </script>
 
 <div class="min-h-screen bg-bg font-sans text-fg">
   <nav class="flex items-center justify-between border-b border-lo/15 px-6 py-4 font-mono text-sm">
-    <a href="/" class="font-bold">♜ <span class="text-acc">rook</span> <span class="text-dim">docs</span></a>
+    <a href="/" class="font-bold"
+      >♜ <span class="text-acc">rook</span> <span class="text-dim">docs</span></a
+    >
     <a href={links.github} class="text-dim hover:text-fg">GitHub</a>
   </nav>
   <div class="mx-auto flex max-w-5xl gap-10 px-6 py-10">
@@ -1210,7 +1235,10 @@ export async function load({ params }) {
       <ul class="sticky top-10 space-y-1 font-mono text-sm">
         {#each nav as item}
           <li>
-            <a href="/{item.slug}" class="block rounded px-2 py-1 text-dim hover:bg-lo/15 hover:text-fg">
+            <a
+              href="/{item.slug}"
+              class="block rounded px-2 py-1 text-dim hover:bg-lo/15 hover:text-fg"
+            >
               {item.title}
             </a>
           </li>
@@ -1236,7 +1264,10 @@ export async function load({ params }) {
 <Prose>
   {#snippet children()}
     <h1>rook documentation</h1>
-    <p>Install rook, configure it, and read the thinking behind the project. Pick a page from the sidebar.</p>
+    <p>
+      Install rook, configure it, and read the thinking behind the project. Pick a page from the
+      sidebar.
+    </p>
   {/snippet}
 </Prose>
 ```
@@ -1260,15 +1291,17 @@ git commit -m "feat(docs): sidebar generator and markdown routing"
 ### Task 9: `apps/docs` — launch content
 
 **Files:**
+
 - Create: `apps/docs/content/install.md`, `configuration.md`, `getting-started.md`, `architecture.md`
 
 **Interfaces:**
+
 - Consumes: mdsvex frontmatter (`title`, `order`) read by `buildNav` and `[...slug]` loader.
 - Produces: four rendered doc pages appearing in the sidebar in order.
 
 - [ ] **Step 1: Create `apps/docs/content/install.md`**
 
-```md
+````md
 ---
 title: Install
 order: 1
@@ -1281,6 +1314,7 @@ rook is a macOS (Apple Silicon) desktop app.
 ```sh
 curl -fsSL https://raw.githubusercontent.com/incantery/rook/main/install.sh | sh
 ```
+````
 
 This installs `/Applications/rook.app` and the `rookctl` CLI from the latest
 release. Use the script (not a browser download) — curl skips the quarantine
@@ -1298,7 +1332,8 @@ rookctl update --check  # just look
 ## From source
 
 `make install` — needs Go, node, and the wails3 CLI.
-```
+
+````
 
 - [ ] **Step 2: Create `apps/docs/content/configuration.md`**
 
@@ -1319,7 +1354,7 @@ the config file.
 The complete key surface — every setting at its default, commented out — ships
 as `docs/config.sample` in the rook repository. Copy it in verbatim and
 uncomment what you want to change.
-```
+````
 
 - [ ] **Step 3: Create `apps/docs/content/getting-started.md`**
 
@@ -1393,10 +1428,12 @@ git commit -m "docs: add launch content (install, config, getting started, archi
 ### Task 10: `apps/docs` — SEO foundations
 
 **Files:**
+
 - Create: `apps/docs/src/routes/sitemap.xml/+server.ts`, `apps/docs/static/robots.txt`, `apps/docs/static/_headers`
 - Modify: `apps/docs/src/routes/+layout.svelte` (add default meta), `apps/docs/src/routes/[...slug]/+page.svelte` (per-page description)
 
 **Interfaces:**
+
 - Consumes: `buildNav` result (already in layout) to enumerate sitemap URLs.
 - Produces: docs sitemap, robots, per-page meta.
 
@@ -1432,7 +1469,7 @@ Replace its `<svelte:head>` with:
 And add `slug` to the load return in `apps/docs/src/routes/[...slug]/+page.ts` — change the return line to:
 
 ```ts
-  return { component: mod.default, title: mod.metadata?.title ?? params.slug, slug: params.slug };
+return { component: mod.default, title: mod.metadata?.title ?? params.slug, slug: params.slug };
 ```
 
 - [ ] **Step 3: Create `apps/docs/src/routes/sitemap.xml/+server.ts`**
@@ -1487,16 +1524,18 @@ git commit -m "feat(docs): add SEO foundations (meta, sitemap, robots)"
 ### Task 11: Deploy config + README + full verification
 
 **Files:**
+
 - Create: `README.md`
 - Verify: full workspace build, checks, tests
 
 **Interfaces:**
+
 - Consumes: everything.
 - Produces: documented deploy instructions; green full build.
 
 - [ ] **Step 1: Create `README.md`**
 
-```md
+````md
 # rookide.com
 
 Marketing (`rookide.com`) and documentation (`docs.rookide.com`) sites for
@@ -1516,6 +1555,7 @@ pnpm install
 pnpm dev:web     # rookide.com on :5173
 pnpm dev:docs    # docs on :5173 (run separately)
 ```
+````
 
 ## Build & test
 
@@ -1529,16 +1569,17 @@ pnpm -r test     # unit tests (seo, nav)
 
 Two Pages projects, both git-connected to this repo:
 
-| Project | Build command | Output dir | Domain |
-|---------|---------------|------------|--------|
-| web  | `pnpm install && pnpm --filter web build`  | `apps/web/build`  | `rookide.com` |
-| docs | `pnpm install && pnpm --filter docs build` | `apps/docs/build` | `docs.rookide.com` |
+| Project | Build command                              | Output dir        | Domain             |
+| ------- | ------------------------------------------ | ----------------- | ------------------ |
+| web     | `pnpm install && pnpm --filter web build`  | `apps/web/build`  | `rookide.com`      |
+| docs    | `pnpm install && pnpm --filter docs build` | `apps/docs/build` | `docs.rookide.com` |
 
 Set each project's **Root directory** to the repo root and the build command
 as above (the monorepo builds one app per project). Push to `main` deploys
 production; PRs get preview URLs. Custom domains are added in the Pages
 dashboard; `apps/*/static/_headers` supplies security headers.
-```
+
+````
 
 - [ ] **Step 2: Full build**
 
@@ -1565,7 +1606,7 @@ Expected: files formatted; re-run `pnpm format:check` prints no diffs.
 ```bash
 git add README.md
 git commit -m "docs: add repo README and Cloudflare Pages deploy guide"
-```
+````
 
 ---
 
@@ -1575,4 +1616,7 @@ git commit -m "docs: add repo README and Cloudflare Pages deploy guide"
 - **Deviation flagged:** spec said self-hosted fonts; plan uses system font stacks for v1 (zero binaries, still CSP-clean). Called out in Global Constraints. Revisit if a branded sans is wanted.
 - **Known risk:** mdsvex + Svelte 5 default-slot rendering of `<Component />` inside `<Prose>` — Task 8 Step 9 note covers the snippet-wrapping fallback if the compiler requires it. Validate at T8 build; if it fails, wrap `<Component />` in `{#snippet children()}`.
 - **Testable logic isolated to pure functions** (`buildMeta`, `buildNav`/`titleFromSlug`) with real failing-first tests; static content verified by build + grep assertions rather than synthetic tests.
+
+```
+
 ```

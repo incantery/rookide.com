@@ -11,7 +11,7 @@ agent-native IDE (positioned as a new category; shipping today as an AI-native
 terminal). This repo hosts **two static sites** from one pnpm workspace:
 
 - **rookide.com** — the marketing site. Vision-forward manifesto whose job is
-  *community-building*: find developers who are dissatisfied with today's
+  _community-building_: find developers who are dissatisfied with today's
   agent/IDE/terminal tooling and give them a "yes, finally" plus a way in.
 - **docs.rookide.com** — the documentation site. Freshly authored Markdown
   (mdsvex), a curated launch set; deeper/internal docs link out to the rook repo.
@@ -21,7 +21,7 @@ Cloudflare Pages projects.
 
 ## Goals
 
-1. **Recruit a community**, not just users. Primary action is *join/contribute*
+1. **Recruit a community**, not just users. Primary action is _join/contribute_
    (GitHub + r/rookide); installing rook is the secondary action.
 2. **Be findable.** SEO foundations so people searching for a better tool land here.
 3. **Be honest.** Sell the vision, but show where rook actually is today so "it is

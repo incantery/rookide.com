@@ -10,8 +10,7 @@ describe('buildMeta', () => {
       image: 'https://rookide.com/og.png'
     });
     expect(m.title).toBe('rook — agent-native IDE');
-    const byKey = (k: string, v: string) =>
-      m.tags.find((t) => t.name === v || t.property === v);
+    const byKey = (k: string, v: string) => m.tags.find((t) => t.name === v || t.property === v);
     expect(byKey('name', 'description')?.content).toBe('An experiment in what comes next.');
     expect(byKey('property', 'og:title')?.content).toBe('rook — agent-native IDE');
     expect(byKey('property', 'og:image')?.content).toBe('https://rookide.com/og.png');
