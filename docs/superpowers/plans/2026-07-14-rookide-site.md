@@ -538,6 +538,11 @@ export default defineConfig({
 ```css
 @import 'tailwindcss';
 @import '@rookide/ui/theme.css';
+/* Tailwind v4 ignores node_modules, so it won't scan the @rookide/ui
+   workspace package by default — component-only utilities (bg-surface,
+   border-lo/25, the dot colors) would be missing. @source makes Tailwind
+   scan the shared components. */
+@source '../../../packages/ui/src';
 ```
 
 > Integration note: Tailwind v4 must see the `@theme` block from the imported
@@ -1003,6 +1008,11 @@ export default defineConfig({
 ```css
 @import 'tailwindcss';
 @import '@rookide/ui/theme.css';
+/* Tailwind v4 ignores node_modules, so it won't scan the @rookide/ui
+   workspace package by default — component-only utilities (bg-surface,
+   border-lo/25, the dot colors) would be missing. @source makes Tailwind
+   scan the shared components. */
+@source '../../../packages/ui/src';
 ```
 
 - [ ] **Step 8: Create `apps/docs/src/routes/+layout.ts`**
