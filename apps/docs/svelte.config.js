@@ -9,6 +9,15 @@ export default {
   preprocess: [vitePreprocess(), mdsvex(mdsvexConfig)],
   kit: {
     adapter: adapter({ fallback: null }),
-    prerender: { handleHttpError: 'fail' }
+    prerender: {
+      handleHttpError: 'fail',
+      // content/ is empty until Task 9, so [...slug] legitimately produces zero
+      // prerendered pages (its EntryGenerator yields no entries). Only ignore
+      // that specific expected case; still fail on any other unseen route.
+      handleUnseenRoutes: ({ routes }) => {
+        if (routes.every((route) => route === '/[...slug]')) return;
+        throw new Error(`Unseen prerenderable routes: ${routes.join(', ')}`);
+      }
+    }
   }
 };
