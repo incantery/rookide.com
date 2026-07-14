@@ -1,5 +1,6 @@
 <script lang="ts">
-  let { children } = $props<{ children: import('svelte').Snippet }>();
+  import type { Snippet } from 'svelte';
+  let { children }: { children: Snippet } = $props();
 </script>
 
 <div
@@ -11,7 +12,7 @@
     [&_a]:text-acc [&_a:hover]:underline
     [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:my-1
     [&_code]:rounded [&_code]:bg-lo/20 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm [&_code]:text-grn
-    [&_pre]:my-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-lo/20 [&_pre]:bg-[#0b0e17] [&_pre]:p-4
+    [&_pre]:my-5 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-lo/20 [&_pre]:bg-surface [&_pre]:p-4
     [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-fg"
 >
   {@render children()}
