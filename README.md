@@ -26,6 +26,21 @@ pnpm check       # svelte-check both apps
 pnpm -r test     # unit tests (seo, nav)
 ```
 
+## Assets
+
+Each site's social card (`apps/<app>/static/og.png`) is generated from a
+static HTML source at `apps/<app>/og/og.html` via headless Chrome, so it can
+be reproduced or tweaked without design tools:
+
+```sh
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --hide-scrollbars \
+  --force-device-scale-factor=1 --window-size=1200,630 \
+  --screenshot="apps/<app>/static/og.png" --default-background-color=00000000 \
+  "file://$(pwd)/apps/<app>/og/og.html"
+```
+
+Verify the output is exactly 1200x630 with `sips -g pixelWidth -g pixelHeight apps/<app>/static/og.png`.
+
 ## Deploy — Cloudflare Pages
 
 Two Pages projects, both git-connected to this repo:

@@ -2,7 +2,12 @@
   import { Prose } from '@rookide/ui';
 </script>
 
-<svelte:head><title>rook docs</title></svelte:head>
+<svelte:head>
+  <title>rook docs</title>
+  <link rel="canonical" href="https://docs.rookide.com/" />
+  <meta property="og:title" content="rook documentation" />
+  <meta property="og:url" content="https://docs.rookide.com/" />
+</svelte:head>
 
 <Prose>
   {#snippet children()}

@@ -19,7 +19,7 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="rook docs" />
-  <meta property="og:image" content="https://rookide.com/og.png" />
+  <meta property="og:image" content="https://docs.rookide.com/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 

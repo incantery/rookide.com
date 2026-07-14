@@ -10,11 +10,23 @@ describe('buildMeta', () => {
       image: 'https://rookide.com/og.png'
     });
     expect(m.title).toBe('rook — agent-native IDE');
-    const byKey = (k: string, v: string) => m.tags.find((t) => t.name === v || t.property === v);
-    expect(byKey('name', 'description')?.content).toBe('An experiment in what comes next.');
-    expect(byKey('property', 'og:title')?.content).toBe('rook — agent-native IDE');
-    expect(byKey('property', 'og:image')?.content).toBe('https://rookide.com/og.png');
-    expect(byKey('name', 'twitter:card')?.content).toBe('summary_large_image');
+    const byKey = (v: string) => m.tags.find((t) => t.name === v || t.property === v);
+    expect(byKey('description')?.content).toBe('An experiment in what comes next.');
+    expect(byKey('og:site_name')?.content).toBe('rook');
+    expect(byKey('og:title')?.content).toBe('rook — agent-native IDE');
+    expect(byKey('og:image')?.content).toBe('https://rookide.com/og.png');
+    expect(byKey('twitter:card')?.content).toBe('summary_large_image');
     expect(m.canonical).toBe('https://rookide.com/');
+  });
+
+  it('defaults image to the shared og.png when none is provided', () => {
+    const m = buildMeta({
+      title: 'rook — agent-native IDE',
+      description: 'An experiment in what comes next.',
+      url: 'https://rookide.com/'
+    });
+    const byKey = (v: string) => m.tags.find((t) => t.name === v || t.property === v);
+    expect(byKey('og:image')?.content).toBe('https://rookide.com/og.png');
+    expect(byKey('twitter:image')?.content).toBe('https://rookide.com/og.png');
   });
 });

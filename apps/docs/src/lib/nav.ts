@@ -8,7 +8,7 @@ export function titleFromSlug(slug: string): string {
     .join(' ');
 }
 
-function slugFromPath(path: string): string {
+export function slugFromPath(path: string): string {
   const file = path.split('/').pop() ?? path;
   return file.replace(/\.(md|svx)$/, '');
 }

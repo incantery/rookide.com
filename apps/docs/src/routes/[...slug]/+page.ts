@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit';
+import { slugFromPath } from '$lib/nav';
 import type { EntryGenerator } from './$types';
 
 const modules = import.meta.glob('/content/*.md');
@@ -7,7 +8,7 @@ export const prerender = true;
 
 export const entries: EntryGenerator = () =>
   Object.keys(modules).map((p) => ({
-    slug: (p.split('/').pop() ?? '').replace(/\.md$/, '')
+    slug: slugFromPath(p)
   }));
 
 export async function load({ params }) {

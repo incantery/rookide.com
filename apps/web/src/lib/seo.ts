@@ -14,6 +14,7 @@ export function buildMeta(input: {
     tags: [
       { name: 'description', content: input.description },
       { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'rook' },
       { property: 'og:title', content: input.title },
       { property: 'og:description', content: input.description },
       { property: 'og:url', content: input.url },
